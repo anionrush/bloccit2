@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-
   before_action :require_sign_in, except: :show
 
   def show
@@ -23,7 +22,6 @@ class PostsController < ApplicationController
       flash.now[:alert] = "There was a problem"
       render :new
     end
-
   end
 
   def edit
@@ -41,7 +39,6 @@ class PostsController < ApplicationController
       flash.now[:alert] = "There was an error saving the post. Please try again."
       render :edit
     end
-
   end
 
   def destroy
