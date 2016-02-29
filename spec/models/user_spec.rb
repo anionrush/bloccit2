@@ -9,13 +9,13 @@ RSpec.describe User, type: :model do
    # Shoulda tests for email
    it { is_expected.to validate_presence_of(:email) }
    it { is_expected.to validate_uniqueness_of(:email) }
-   it { is_expected.to validate_length_of(:email).is_at_least(3) }
+   it { is_expected.to ensure_length_of(:email).is_at_least(3) }
    it { is_expected.to allow_value("user@bloccit.com").for(:email) }
  
    # Shoulda tests for password
    it { is_expected.to validate_presence_of(:password) }
    it { is_expected.to have_secure_password }
-   it { is_expected.to validate_length_of(:password).is_at_least(6) }
+   it { is_expected.to ensure_length_of(:password).is_at_least(6) }
  
    describe "attributes" do
      it "should respond to name" do
