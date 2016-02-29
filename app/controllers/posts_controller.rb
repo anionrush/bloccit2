@@ -2,12 +2,13 @@ class PostsController < ApplicationController
   before_action :require_sign_in, except: :show
 
   def show
-    @post = Post.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
   end
 
   def new
     @topic = Topic.find(params[:topic_id])
-    @post = Post.new
+    @post = @topic.posts.build
   end
 
   def create
@@ -25,14 +26,15 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
   end
 
   def update 
-    @post = Post.find(params[:id])
-    @post.assign_attributes(post_params)
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
  
-    if @post.save
+    if @post.update(post_params)
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
     else
@@ -42,7 +44,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:id])
+    
     if @post.destroy
       flash[:notice] = "\"#{@post.title}\" was deleted successfully."
       redirect_to @post.topic
