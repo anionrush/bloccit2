@@ -84,7 +84,7 @@ RSpec.describe PostsController, type: :controller do
              topic_id: my_topic.id,
              post: {title: RandomData.random_sentence, body: RandomData.random_paragraph}
 
-        expect(response).to redirect_to(new_session_path)
+        expect(response).to redirect_to([my_topic, Post.last])
       end
 
       it "increases the number of Post by 1" do
