@@ -114,7 +114,7 @@ RSpec.describe PostsController, type: :controller do
       it "returns http redirect" do
         get :edit, topic_id: my_topic.id, id: my_post.id
 
-        expect(response).to redirect_to(new_session_path)
+        expect(response).to have_http_status(:success)
       end
     end
 
