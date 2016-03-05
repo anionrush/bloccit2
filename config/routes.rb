@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'labels/show'
+
   resources :topics do  
     resources :posts, except: [:index]
   end
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
+  resources :labels, only: [:show]
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   get 'about' => 'welcome#about'
