@@ -9,9 +9,6 @@ class Vote < ActiveRecord::Base
 private
  
   def update_post
-    puts "start: #{__method__} => #{post.rank}"
     post.update_rank
-    puts "end:   #{__method__} => #{post.rank}"
-  end
-   
+  end   
 end
