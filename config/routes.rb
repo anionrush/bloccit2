@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :posts, only: [] do
     resources :comments, only: [:create, :destroy]
     resources :favorites, only: [:create, :destroy]
-    post '/up-vote' => 'votes#up_vote', as: :up_vote
-    post '/down-vote' => 'votes#down_vote', as: :down_vote
+    post '/up_vote' => 'votes#up_vote', as: :up_vote
+    post '/down_vote' => 'votes#down_vote', as: :down_vote
   end
 
   resources :labels, only: [:show]
@@ -18,6 +18,13 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
 
   root 'welcome#index'
+
+  namespace :api do
+     namespace :v1 do
+       resources :users, only: [:index, :show]
+       resources :topics, only: [:index, :show]
+     end
+   end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
