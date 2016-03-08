@@ -1,0 +1,15 @@
+<ul>
+  <% @user.favorites.each do |favorite| %>
+  <% post = Post.find_by(favorite.post_id) %>
+    <li> 
+      <div> 
+        <%= render partial: 'votes/voter', locals: { post: post } %> 
+        <%= link_to post.title, topic_post_path(post.topic, post) %> 
+        <%= image_tag @user.avatar_url(50), class: 'media-object' %>
+        <%= "The number of comments is #{post.comments.count}" %>
+      </div>
+
+    </li>
+  <% end %>
+
+</ul>
