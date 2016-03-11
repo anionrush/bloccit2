@@ -1,7 +1,7 @@
  source 'https://rubygems.org'
  
  # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
- gem 'rails', '4.2.5'
+ gem 'rails', '4.2.6'
  gem 'bcrypt'
  
  # #1
@@ -16,7 +16,7 @@
  end
 
  group :development, :test do 
- 	gem 'rspec-rails', '~> 3.0'
+ 	gem 'rspec-rails', '~> 3.4.2'
  	gem 'shoulda'
  end
  
